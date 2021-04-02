@@ -1,0 +1,57 @@
+@import './base/settings';
+@import './base/base';
+@import './components/modal';
+@import './components/header';
+@import './components/container';
+@import './components/button';
+
+body {
+  margin: 0;
+}
+
+main {
+  margin: 2rem;
+}
+
+ol {
+  list-style: none;
+  padding: 0;
+}
+
+input[type="text"] {
+  margin: 5px;
+  padding: 8px;
+}
+
+input[type="text"]:focus {
+  border: 1px solid $app-g-color;
+  outline: none;
+  color: $app-g-color;
+  border-bottom: .3rem solid darken($color: $app-g-color, $amount: 20%);
+}
+
+li {
+  padding: 5px;
+  margin: 5px;
+  border: 1px solid $app-g-color;
+}
+
+.li-option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.single-delete {
+  color: $app-g-red;
+  font-weight: bold;
+  cursor: pointer;
+  border: 1px solid $app-g-red;
+  padding: 2px 4px;
+  box-shadow: 1px 2px 4px $app-g-red;
+}
+
+.selected-option {
+  color: $app-g-color;
+  font-size: larger;
+}

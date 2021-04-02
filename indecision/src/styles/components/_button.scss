@@ -1,0 +1,17 @@
+button {
+  margin: 5px;
+  padding: 8px;
+  background: $app-g-color;
+  border: 0;
+  color: $app-g-white;
+  box-shadow: 0px 0px 2px 0px $app-g-color;
+  outline: none;
+  cursor: pointer;
+  border-bottom: .3rem solid darken($color: $app-g-color, $amount: 10%);
+}
+
+button:disabled {
+  background: gray;
+  box-shadow: 0px 0px 2px 0px gray;
+  color: $app-btn-disabled;
+}
