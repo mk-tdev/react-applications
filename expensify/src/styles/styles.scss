@@ -1,3 +1,24 @@
 body {
   background: azure;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  background-color: rgb(32, 117, 89);
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
+  padding: 20px 5px;
+  color: azure;
+
+  .is-active {
+    font-size: larger;
+  }
+
+  a {
+    padding: 0 10px;
+    text-decoration: none;
+    color: fff;
+  }
 }
