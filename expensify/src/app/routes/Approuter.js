@@ -12,20 +12,11 @@ function AppRouter() {
     <BrowserRouter>
       <Header />
       <Switch>
-        <Route path="/" exact>
-          <Home />
-        </Route>
-
-        <Route path="/create">
-          <Create />
-        </Route>
-
-        <Route path="/edit">
-          <Edit />
-        </Route>
-
+        <Route path="/" exact component={Home} />
+        <Route path="/create" component={Create} />
+        <Route path="/edit" component={Edit} exact />
+        <Route path="/edit/:id" component={Edit} />
         <Route path="/help" component={Help} />
-
         <Route component={NotFound} />
       </Switch>
     </BrowserRouter>

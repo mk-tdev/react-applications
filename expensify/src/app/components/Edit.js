@@ -1,7 +1,11 @@
 import React from "react";
+import { useParams } from "react-router";
 
-function Edit() {
+const Edit = (props) => {
+  const { id } = useParams();
+  console.log(id);
+
   return <div>Edit</div>;
-}
+};
 
 export default Edit;

@@ -1,11 +1,9 @@
-import React from 'react'
+import React from "react";
 
-function Help() {
-  return (
-    <div>
-      Help
-    </div>
-  )
+function Help(props) {
+  console.log("Help: ", props);
+
+  return <div>Help</div>;
 }
 
-export default Help
+export default Help;

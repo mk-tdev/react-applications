@@ -11,6 +11,7 @@ body {
   align-content: center;
   padding: 20px 5px;
   color: azure;
+  box-shadow: 0 2px 12px rgb(32, 117, 89);
 
   .is-active {
     font-size: larger;
@@ -19,6 +20,6 @@ body {
   a {
     padding: 0 10px;
     text-decoration: none;
-    color: fff;
+    color: #fff;
   }
 }
