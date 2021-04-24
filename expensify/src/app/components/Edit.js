@@ -5,7 +5,11 @@ const Edit = (props) => {
   const { id } = useParams();
   console.log(id);
 
-  return <div>Edit</div>;
+  return (
+    <div>
+      <h2>Edit</h2>
+    </div>
+  );
 };
 
 export default Edit;

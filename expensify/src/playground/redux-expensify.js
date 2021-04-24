@@ -76,24 +76,6 @@ const setEndDate = (date) => {
   };
 };
 
-const demoState = {
-  expenses: [
-    {
-      id: "1a",
-      description: "Rent",
-      note: "fixed payment",
-      amount: 700,
-      createdAt: 0,
-    },
-  ],
-  filters: {
-    text: "rent",
-    sortBy: "amount",
-    startDate: undefined,
-    endDate: undefined,
-  },
-};
-
 const defaultExpensesState = [];
 const defaultFilterState = {
   text: "",
