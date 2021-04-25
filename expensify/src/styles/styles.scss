@@ -1,3 +1,5 @@
+$app-green: rgb(32, 117, 89);
+
 body {
   background: azure;
   margin: 0;
@@ -5,13 +7,13 @@ body {
 }
 
 .header {
-  background-color: rgb(32, 117, 89);
+  background-color: $app-green;
   display: flex;
   justify-content: flex-start;
   align-content: center;
   padding: 20px 5px;
   color: azure;
-  box-shadow: 0 2px 12px rgb(32, 117, 89);
+  box-shadow: 0 2px 12px $app-green;
 
   .is-active {
     font-size: larger;
@@ -22,4 +24,28 @@ body {
     text-decoration: none;
     color: #fff;
   }
+}
+
+.container {
+  padding: 1rem 2.5rem;
+}
+
+input[type=text] {
+  padding: 5px;
+  color: $app-green;
+
+  :focus {
+    background-color: $app-green;
+    border-color: aquamarine;
+    outline: $app-green;
+  }
+}
+
+button {
+  background-color: $app-green;
+  color: white;
+  border: 0;
+  padding: 8px;
+  margin: 5px 0px;
+  cursor: pointer;
 }

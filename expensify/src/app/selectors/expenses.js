@@ -1,5 +1,4 @@
 export default (expenses, { text, sortBy, startDate, endDate }) => {
-  console.log("selector");
   return expenses
     .filter((expense) => {
       const startDateMatch =

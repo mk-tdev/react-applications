@@ -1,5 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+
 import configureStore from "./app/store/configureStore";
 import { addExpense } from "./app/actions/expenses";
 import { setTextFilter } from "./app/actions/filters";
@@ -20,4 +22,10 @@ const state = store.getState();
 const visibleExpenses = getVisibleExpenses(state.expenses, state.filters);
 
 console.log("state: ", visibleExpenses);
-ReactDOM.render(<AppRouter store={store} />, document.getElementById("root"));
+const template = (
+  <Provider store={store}>
+    <AppRouter />
+  </Provider>
+);
+
+ReactDOM.render(template, document.getElementById("root"));
