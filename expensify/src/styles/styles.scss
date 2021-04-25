@@ -30,9 +30,11 @@ body {
   padding: 1rem 2.5rem;
 }
 
+select,
 input[type=text] {
   padding: 5px;
   color: $app-green;
+  outline: none;
 
   :focus {
     background-color: $app-green;
@@ -46,6 +48,16 @@ button {
   color: white;
   border: 0;
   padding: 8px;
-  margin: 5px 0px;
   cursor: pointer;
+}
+
+.expense-item {
+  border: 1px solid $app-green;
+  margin: 8px 0;
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 0 5px;
+  border-radius: 0 17px;
 }

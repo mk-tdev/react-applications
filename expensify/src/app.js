@@ -17,6 +17,9 @@ store.dispatch(
 store.dispatch(
   addExpense({ description: "PUB without Rent", amount: 100, createdAt: 2000 })
 );
+store.dispatch(
+  addExpense({ description: "Food", amount: 500, createdAt: 12000 })
+);
 store.dispatch(setTextFilter("rent"));
 const state = store.getState();
 const visibleExpenses = getVisibleExpenses(state.expenses, state.filters);
