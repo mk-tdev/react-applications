@@ -1,11 +1,8 @@
 import React from "react";
+import AddExpense from "./AddExpense";
 
 function Create() {
-  return (
-    <div>
-      <h2>Create</h2>
-    </div>
-  );
+  return <AddExpense />;
 }
 
 export default Create;

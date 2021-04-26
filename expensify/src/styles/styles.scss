@@ -31,8 +31,11 @@ body {
 }
 
 select,
-input[type=text] {
+textarea,
+input[type=text],
+input[type=number] {
   padding: 5px;
+  margin: 10px 0;
   color: $app-green;
   outline: none;
 
