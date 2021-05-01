@@ -20,11 +20,10 @@ store.dispatch(
 store.dispatch(
   addExpense({ description: "Food", amount: 500, createdAt: 12000 })
 );
-store.dispatch(setTextFilter("rent"));
+// store.dispatch(setTextFilter("rent"));
 const state = store.getState();
-const visibleExpenses = getVisibleExpenses(state.expenses, state.filters);
+// const visibleExpenses = getVisibleExpenses(state.expenses, state.filters);
 
-console.log("state: ", visibleExpenses);
 const template = (
   <Provider store={store}>
     <AppRouter />
