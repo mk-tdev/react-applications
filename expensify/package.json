@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "serve": "webpack serve",
-    "build": "webpack"
+    "build-dev": "webpack",
+    "build-prod": "webpack --env production"
   },
   "keywords": [],
   "author": "",
@@ -28,6 +29,7 @@
     "@babel/preset-react": "^7.13.13",
     "babel-loader": "^8.2.2",
     "css-loader": "^5.2.0",
+    "mini-css-extract-plugin": "^1.6.0",
     "node-sass": "^5.0.0",
     "redux-devtools": "^3.7.0",
     "sass-loader": "^11.0.1",
