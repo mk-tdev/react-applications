@@ -37,7 +37,6 @@ const firebaseFunc = () => {
   //   .then((snapshot) => console.log("Fetched data: ", snapshot.val()))
   //   .catch((r) => console.log("Error: ", r));
 
-  return;
   database.ref().set({
     name: "Muthu",
     age: 30,
@@ -68,4 +67,8 @@ const firebaseFunc = () => {
   database.ref().off(onValueChange);
 };
 
-if (firebase) firebaseFunc();
+// if (firebase) firebaseFunc();
+
+firebase.initializeApp(firebaseConfig);
+const database = firebase.database();
+export { firebase, database as default };

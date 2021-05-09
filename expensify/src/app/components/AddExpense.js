@@ -3,16 +3,17 @@ import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import ExpenseForm from "./ExpenseForm";
-import { addExpense } from "../actions/expenses";
+import { initAddExpense } from "../actions/expenses";
 
 function AddExpense(props) {
   const history = useHistory();
+
   return (
     <div>
       <h1>Add Expense</h1>
       <ExpenseForm
         onSubmit={(expense) => {
-          props.dispatch(addExpense(expense));
+          props.initAddExpense(expense);
           history.push("/");
         }}
       />
@@ -20,4 +21,8 @@ function AddExpense(props) {
   );
 }
 
-export default connect()(AddExpense);
+const mapDispatchToPros = (dispatch) => ({
+  initAddExpense: (expense) => dispatch(initAddExpense(expense)),
+});
+
+export default connect(undefined, mapDispatchToPros)(AddExpense);
