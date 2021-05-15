@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from "uuid";
 import database from "../../firebase/firebase";
 
 // ADD_EXPENSE
-export const addExpense = (expense) => {
+export const addExpense = (expense = {}) => {
   return {
     type: "ADD_EXPENSE",
     expense,
