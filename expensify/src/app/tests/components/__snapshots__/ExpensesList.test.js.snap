@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render ExpensesList 1`] = `
+<div>
+  <Connect(ExpenseListItem)
+    amount={700}
+    createdAt={1000}
+    description="Rent"
+    id="123abc"
+    key="123abc"
+  />
+  <Connect(ExpenseListItem)
+    amount={300}
+    createdAt={2000}
+    description="PUB"
+    id="123abd"
+    key="123abd"
+  />
+  <Connect(ExpenseListItem)
+    amount={450}
+    createdAt={3000}
+    description="Food"
+    id="123abe"
+    key="123abe"
+  />
+</div>
+`;
+
+exports[`should render ExpensesList 2`] = `
+<div>
+  <p>
+    No Expenses Found!
+  </p>
+</div>
+`;

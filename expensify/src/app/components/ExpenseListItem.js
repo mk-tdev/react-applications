@@ -5,7 +5,7 @@ import moment from "moment";
 
 import { removeExpense } from "../actions/expenses";
 
-const ExpenseListItem = ({ description, amount, createdAt, id, dispatch }) => {
+export const ExpenseListItem = ({ description, amount, createdAt, id, dispatch }) => {
   // console.log("moment", moment(createdAt).date());
 
   return (

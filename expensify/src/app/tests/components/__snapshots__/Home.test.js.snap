@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render Home 1`] = `
+<div>
+  <h2>
+    Expenses List
+  </h2>
+  <Connect(ExpensesListFilter) />
+  <Connect(ExpensesList) />
+  <NavLink
+    activeClassName="is-active"
+    exact={true}
+    to="/edit/2"
+  >
+    Help
+  </NavLink>
+</div>
+`;

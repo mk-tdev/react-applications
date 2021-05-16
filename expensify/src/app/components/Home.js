@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import ConnectedExpensesList from "./ExpensesList";
 import ExpensesListFilter from "./ExpensesListFilter";
 
-function Home() {
+const Home = () => {
   return (
     <div>
       <h2>Expenses List</h2>
@@ -15,6 +15,6 @@ function Home() {
       </NavLink>
     </div>
   );
-}
+};
 
 export default Home;
