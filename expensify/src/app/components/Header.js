@@ -15,9 +15,9 @@ function Header() {
       <NavLink to="/edit" activeClassName="is-active">
         Edit
       </NavLink>
-      <NavLink to="/help" activeClassName="is-active">
+      {/* <NavLink to="/help" activeClassName="is-active">
         Help
-      </NavLink>
+      </NavLink> */}
     </header>
   );
 }

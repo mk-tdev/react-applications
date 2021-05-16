@@ -7,19 +7,23 @@
     "serve": "webpack serve",
     "build-dev": "webpack",
     "build-prod": "webpack --env production",
-    "test": "jest --watch"
+    "test": "jest --config=jest.config.json --watch"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.6",
     "firebase": "^8.5.0",
     "moment": "^2.29.1",
+    "raf": "^3.4.1",
     "react": "^17.0.2",
     "react-dates": "^21.8.0",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.3",
     "react-router-dom": "^5.2.0",
+    "react-test-renderer": "^17.0.2",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
     "uuid": "^8.3.2"
