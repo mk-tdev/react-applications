@@ -10,6 +10,7 @@ import AppRouter from "./app/routes/AppRouter";
 import "./styles/styles.scss";
 import "react-dates/initialize";
 import "react-dates/lib/css/_datepicker.css";
+
 import "./firebase/firebase";
 // import "./playground/promises";
 
