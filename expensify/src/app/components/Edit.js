@@ -1,27 +1,35 @@
 import React from "react";
 import { connect } from "react-redux";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import ExpenseForm from "./ExpenseForm";
-import { editExpense } from "../actions/expenses";
+import { editExpense, removeExpense } from "../actions/expenses";
 
-const Edit = (props) => {
-  const history = useHistory();
+export class Edit extends React.Component {
+  onSubmit = (expense) => {
+    this.props.editExpense(this.props.expense.id, expense);
+    this.props.history.push("/");
+  };
 
-  return (
-    <div>
-      <h2>Edit</h2>
+  onRemove = () => {
+    this.props.removeExpense({ id: this.props.expense.id });
+    this.props.history.push("/");
+  };
 
-      <ExpenseForm
-        expense={props.expense}
-        onSubmit={(expense) => {
-          console.log("expense: ", expense);
-          props.dispatch(editExpense(props.expense.id, expense));
-          history.push("/");
-        }}
-      />
-    </div>
-  );
-};
+  render() {
+    return (
+      <div>
+        <h2>Edit</h2>
+
+        <ExpenseForm expense={this.props.expense} onSubmit={this.onSubmit} />
+
+        <div>
+          <button onClick={this.onRemove}>Remove This Expense</button>
+        </div>
+      </div>
+    );
+  }
+}
 
 const mapStateToProps = (state, props) => {
   return {
@@ -29,4 +37,9 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-export default connect(mapStateToProps)(Edit);
+const mapDispatchToPros = (dispatch, props) => ({
+  editExpense: (id, expense) => dispatch(editExpense(id, expense)),
+  removeExpense: (id) => dispatch(removeExpense(id)),
+});
+
+export default withRouter(connect(mapStateToProps, mapDispatchToPros)(Edit));

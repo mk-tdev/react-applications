@@ -17,13 +17,18 @@ import "./firebase/firebase";
 const store = configureStore();
 
 store.dispatch(
-  addExpense({ description: "Rent", amount: 700, createdAt: 1000 })
+  addExpense({ id: "11", description: "Rent", amount: 700, createdAt: 1000 })
 );
 store.dispatch(
-  addExpense({ description: "PUB without Rent", amount: 100, createdAt: 2000 })
+  addExpense({
+    id: "12",
+    description: "PUB without Rent",
+    amount: 100,
+    createdAt: 2000,
+  })
 );
 store.dispatch(
-  addExpense({ description: "Food", amount: 500, createdAt: 12000 })
+  addExpense({ id: "13", description: "Food", amount: 500, createdAt: 12000 })
 );
 // store.dispatch(setTextFilter("rent"));
 const state = store.getState();

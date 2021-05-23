@@ -2,6 +2,7 @@ import React from "react";
 import Adapter from "enzyme-adapter-react-16";
 import { shallow, configure } from "enzyme";
 configure({ adapter: new Adapter() });
+import moment from "moment";
 
 import ExpenseForm from "../../components/ExpenseForm";
 
@@ -71,4 +72,34 @@ test("should not update state when in-valid amount provided", () => {
 
   expect(wrapper.state("amount")).toBe("");
   expect(wrapper).toMatchSnapshot();
+});
+
+test("should call on submit props", () => {
+  const onSubmitSpy = jest.fn();
+  const wrapper = shallow(
+    <ExpenseForm expense={expense} onSubmit={onSubmitSpy} />
+  );
+  wrapper.find("form").simulate("submit", { preventDefault: () => {} });
+  expect(wrapper.state("errorText")).toBe("");
+
+  expect(onSubmitSpy).toHaveBeenCalledWith({
+    amount: 450,
+    createdAt: 3000,
+    description: "Food",
+    note: undefined,
+  });
+});
+
+test("should call onDateChanged", () => {
+  const now = moment();
+  const wrapper = shallow(<ExpenseForm />);
+  wrapper.find("#date").prop("onDateChange")(now);
+  expect(wrapper.state("createdAt")).toBe(now);
+});
+
+test("should call onFocuesChanged", () => {
+  const focused = true;
+  const wrapper = shallow(<ExpenseForm />);
+  wrapper.find("#date").prop("onFocusChange")({ focused });
+  expect(wrapper.state("calendarFocued")).toBe(focused);
 });
