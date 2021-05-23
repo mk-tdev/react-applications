@@ -5,5 +5,6 @@ const promise = new Promise((resolve, reject) => {
 
 promise
   .then((d) => console.log("Resolved: ", d))
+  .then(() => console.log("Re running: "))
   .catch((r) => console.log("Rejected: ", r))
   .finally(() => console.log("Finally"));

@@ -1,4 +1,16 @@
-import { addExpense, editExpense, removeExpense } from "../../actions/expenses";
+import {
+  addExpense,
+  editExpense,
+  removeExpense,
+  initAddExpense,
+} from "../../actions/expenses";
+import configureStore from "redux-mock-store";
+import thunk from "redux-thunk";
+
+import database from "../../../firebase/firebase";
+
+const middlewares = [thunk];
+const mockStore = configureStore(middlewares);
 
 test("should removeExpense", () => {
   const action = removeExpense({ id: "123abc" });
@@ -41,3 +53,59 @@ test("should addExpense with null", () => {
     expense: {},
   });
 });
+
+test("should add new expense to database", (done) => {
+  const store = mockStore({});
+  const expenseData = {
+    description: "SSD",
+    amount: 9000,
+    note: "For Storage",
+    createdAt: 1080,
+  };
+  store
+    .dispatch(initAddExpense(expenseData))
+    .then((_) => {
+      const actions = store.getActions();
+      expect(actions[0]).toEqual({
+        type: "ADD_EXPENSE",
+        expense: {
+          id: expect.any(String),
+          ...expenseData,
+        },
+      });
+      return database.ref(`expenses/${actions[0].expense.id}`).once("value");
+    })
+    .then((snapshot) => {
+      expect(snapshot.val()).toEqual(expenseData);
+      done();
+    });
+});
+
+test("should add new expense to database", (done) => {
+  const store = mockStore({});
+  const expenseData = {
+    description: "",
+    note: "",
+    amount: 0,
+    createdAt: 0,
+  };
+  store
+    .dispatch(initAddExpense({}))
+    .then((_) => {
+      const actions = store.getActions();
+      expect(actions[0]).toEqual({
+        type: "ADD_EXPENSE",
+        expense: {
+          id: expect.any(String),
+          ...expenseData,
+        },
+      });
+      return database.ref(`expenses/${actions[0].expense.id}`).once("value");
+    })
+    .then((snapshot) => {
+      expect(snapshot.val()).toEqual(expenseData);
+      done();
+    });
+});
+
+test("should add new expense with default to database", () => {});
