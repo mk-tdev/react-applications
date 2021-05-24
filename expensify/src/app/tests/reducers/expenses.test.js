@@ -1,11 +1,7 @@
 import expensesReducer from "../../reducers/expenses";
-import moment from "moment";
+import { expenses } from "../fixtures/expenses";
 
-const expensesData = [
-  { description: "Rent", amount: 700, createdAt: 1000, id: "123abc" },
-  { description: "PUB", amount: 300, createdAt: 2000, id: "123abd" },
-  { description: "Food", amount: 450, createdAt: 3000, id: "123abe" },
-];
+const expensesData = expenses;
 
 test("should test default", () => {
   const state = expensesReducer(undefined, { type: "@@INIT" });
@@ -41,7 +37,7 @@ test("should EDIT_EXPENSE", () => {
 test("should not EDIT_EXPENSE when not found ", () => {
   const action = {
     type: "EDIT_EXPENSE",
-    id: 'unavailable',
+    id: "unavailable",
     updates: { amount: 500 },
   };
   const state = expensesReducer(expensesData, action);
@@ -61,6 +57,15 @@ test("should REMOVE_EXPENSE when ID mismatch", () => {
   const action = {
     type: "REMOVE_EXPENSE",
     id: "-1",
+  };
+  const state = expensesReducer(expensesData, action);
+  expect(state).toEqual(expensesData);
+});
+
+test("should SET_EXPENSES", () => {
+  const action = {
+    type: "SET_EXPENSES",
+    expenses: expensesData,
   };
   const state = expensesReducer(expensesData, action);
   expect(state).toEqual(expensesData);

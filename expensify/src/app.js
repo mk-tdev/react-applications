@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 
 import configureStore from "./app/store/configureStore";
-import { addExpense } from "./app/actions/expenses";
+import { startSetExpenses } from "./app/actions/expenses";
 import { setTextFilter } from "./app/actions/filters";
 import getVisibleExpenses from "./app/selectors/expenses";
 import AppRouter from "./app/routes/AppRouter";
@@ -16,28 +16,13 @@ import "./firebase/firebase";
 
 const store = configureStore();
 
-store.dispatch(
-  addExpense({ id: "11", description: "Rent", amount: 700, createdAt: 1000 })
-);
-store.dispatch(
-  addExpense({
-    id: "12",
-    description: "PUB without Rent",
-    amount: 100,
-    createdAt: 2000,
-  })
-);
-store.dispatch(
-  addExpense({ id: "13", description: "Food", amount: 500, createdAt: 12000 })
-);
-// store.dispatch(setTextFilter("rent"));
-const state = store.getState();
-// const visibleExpenses = getVisibleExpenses(state.expenses, state.filters);
-
 const template = (
   <Provider store={store}>
     <AppRouter />
   </Provider>
 );
 
-ReactDOM.render(template, document.getElementById("root"));
+ReactDOM.render(<p>Loading!</p>, document.getElementById("root"));
+store.dispatch(startSetExpenses()).then(() => {
+  ReactDOM.render(template, document.getElementById("root"));
+});
