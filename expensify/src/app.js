@@ -11,7 +11,7 @@ import "./styles/styles.scss";
 import "react-dates/initialize";
 import "react-dates/lib/css/_datepicker.css";
 
-import "./firebase/firebase";
+import { firebase } from "./firebase/firebase";
 // import "./playground/promises";
 
 const store = configureStore();
@@ -25,4 +25,12 @@ const template = (
 ReactDOM.render(<p>Loading!</p>, document.getElementById("root"));
 store.dispatch(startSetExpenses()).then(() => {
   ReactDOM.render(template, document.getElementById("root"));
+});
+
+firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+    console.log("Logged In");
+  } else {
+    console.log("Logged Out");
+  }
 });

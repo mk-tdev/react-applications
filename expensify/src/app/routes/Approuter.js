@@ -6,6 +6,7 @@ import Edit from "../components/Edit";
 import Header from "../components/Header";
 import Help from "../components/Help";
 import Home from "../components/Home";
+import Login from "../components/Login";
 import NotFound from "../components/NotFound";
 
 function AppRouter() {
@@ -14,7 +15,8 @@ function AppRouter() {
       <Header />
       <div className="container">
         <Switch>
-          <Route path="/" exact component={Home} />
+          <Route path="/" exact component={Login} />
+          <Route path="/home" exact component={Home} />
           <Route path="/create" component={Create} />
           <Route path="/edit" component={Edit} exact />
           <Route path="/edit/:id" component={Edit} />

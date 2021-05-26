@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "serve": "webpack serve",
+    "start": "webpack serve",
     "build-dev": "webpack",
     "build-prod": "webpack --env production",
     "test": "cross-env NODE_ENV=test jest --config=jest.config.json --watch"
