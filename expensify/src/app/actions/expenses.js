@@ -40,12 +40,36 @@ export const removeExpense = ({ id = "" } = {}) => {
   };
 };
 
+export const startRemoveExpenses = ({ id } = {}) => {
+  return (dispatch) => {
+    return database
+      .ref(`expenses/${id}`)
+      .remove()
+      .then(() => {
+        dispatch(removeExpense({ id }));
+      })
+      .catch((r) => console.log("Error: ", r));
+  };
+};
+
 // EDIT_EXPENSE
 export const editExpense = (id, updates) => {
   return {
     type: "EDIT_EXPENSE",
     id,
     updates,
+  };
+};
+
+export const startEditExpenses = (id, updates) => {
+  return (dispatch) => {
+    return database
+      .ref(`expenses/${id}`)
+      .update(updates)
+      .then(() => {
+        dispatch(editExpense(id, updates));
+      })
+      .catch((r) => console.log("Error: ", r));
   };
 };
 

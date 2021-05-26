@@ -3,16 +3,20 @@ import { connect } from "react-redux";
 // import { useHistory } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import ExpenseForm from "./ExpenseForm";
-import { editExpense, removeExpense } from "../actions/expenses";
+import {
+  editExpense,
+  startRemoveExpenses,
+  startEditExpenses,
+} from "../actions/expenses";
 
 export class Edit extends React.Component {
   onSubmit = (expense) => {
-    this.props.editExpense(this.props.expense.id, expense);
+    this.props.startEditExpenses(this.props.expense.id, expense);
     this.props.history.push("/");
   };
 
   onRemove = () => {
-    this.props.removeExpense({ id: this.props.expense.id });
+    this.props.startRemoveExpenses({ id: this.props.expense.id });
     this.props.history.push("/");
   };
 
@@ -38,8 +42,8 @@ const mapStateToProps = (state, props) => {
 };
 
 const mapDispatchToPros = (dispatch, props) => ({
-  editExpense: (id, expense) => dispatch(editExpense(id, expense)),
-  removeExpense: (id) => dispatch(removeExpense(id)),
+  startEditExpenses: (id, expense) => dispatch(startEditExpenses(id, expense)),
+  startRemoveExpenses: (id) => dispatch(startRemoveExpenses(id)),
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToPros)(Edit));

@@ -5,6 +5,8 @@ import {
   initAddExpense,
   startSetExpenses,
   setExpenses,
+  startRemoveExpenses,
+  startEditExpenses,
 } from "../../actions/expenses";
 import configureStore from "redux-mock-store";
 import thunk from "redux-thunk";
@@ -32,6 +34,26 @@ test("should removeExpense", () => {
   expect(action).toEqual({ type: "REMOVE_EXPENSE", id: "123abc" });
 });
 
+test("should removeExpense from firebase", (done) => {
+  const store = mockStore({});
+  const id = expenses[2].id;
+  store
+    .dispatch(startRemoveExpenses({ id }))
+    .then(() => {
+      const actions = store.getActions();
+      expect(actions[0]).toEqual({
+        type: "REMOVE_EXPENSE",
+        id,
+      });
+
+      return database.ref(`expenses/${id}`).once("value");
+    })
+    .then((snapshot) => {
+      expect(snapshot.val()).toBeFalsy();
+      done();
+    });
+});
+
 test("should editExpense", () => {
   const action = editExpense("123abc", { note: "updated note" });
 
@@ -40,6 +62,28 @@ test("should editExpense", () => {
     id: "123abc",
     updates: { note: "updated note" },
   });
+});
+
+test("should startEditExpenses on firebase", (done) => {
+  const store = mockStore({});
+  const id = expenses[2].id;
+  const updates = { amount: 222 };
+  store
+    .dispatch(startEditExpenses(id, updates))
+    .then(() => {
+      const actions = store.getActions();
+      expect(actions[0]).toEqual({
+        type: "EDIT_EXPENSE",
+        id,
+        updates,
+      });
+
+      return database.ref(`expenses/${id}`).once("value");
+    })
+    .then((snapshot) => {
+      expect(snapshot.val().amount).toBe(updates.amount);
+      done();
+    });
 });
 
 test("should addExpense", () => {
