@@ -9,3 +9,10 @@ test("should render NotFound", () => {
   const wrapper = shallow(<Login />);
   expect(wrapper).toMatchSnapshot();
 });
+
+test("should login when button is clicked", () => {
+  const startLogin = jest.fn();
+  const wrapper = shallow(<Login startLogin={startLogin} />);
+  wrapper.find("button").simulate("click");
+  expect(startLogin).toHaveBeenCalled();
+});

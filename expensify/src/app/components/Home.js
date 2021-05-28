@@ -10,9 +10,9 @@ const Home = () => {
       <ExpensesListFilter />
       <ConnectedExpensesList />
 
-      <NavLink to="/edit/2" activeClassName="is-active" exact>
+      {/* <NavLink to="/edit/2" activeClassName="is-active" exact>
         Help
-      </NavLink>
+      </NavLink> */}
     </div>
   );
 };

@@ -9,7 +9,7 @@ import { initAddExpense } from "../actions/expenses";
 export class AddExpense extends React.Component {
   onSubmit = (expense) => {
     this.props.initAddExpense(expense);
-    this.props.history.push("/");
+    this.props.history.push("/home");
   };
 
   render() {

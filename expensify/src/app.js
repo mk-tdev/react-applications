@@ -4,8 +4,7 @@ import { Provider } from "react-redux";
 
 import configureStore from "./app/store/configureStore";
 import { startSetExpenses } from "./app/actions/expenses";
-import { setTextFilter } from "./app/actions/filters";
-import getVisibleExpenses from "./app/selectors/expenses";
+import { setLOGGEDIn, setLOGGEDOut } from "./app/actions/auth";
 import AppRouter from "./app/routes/AppRouter";
 import "./styles/styles.scss";
 import "react-dates/initialize";
@@ -22,15 +21,16 @@ const template = (
   </Provider>
 );
 
-ReactDOM.render(<p>Loading!</p>, document.getElementById("root"));
-store.dispatch(startSetExpenses()).then(() => {
-  ReactDOM.render(template, document.getElementById("root"));
-});
+ReactDOM.render(template, document.getElementById("root"));
+// ReactDOM.render(<p>Loading!</p>, document.getElementById("root"));
+// store.dispatch(startSetExpenses()).then(() => {
+// });
 
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
-    console.log("Logged In");
+    store.dispatch(setLOGGEDIn(user.uid));
+    store.dispatch(startSetExpenses());
   } else {
-    console.log("Logged Out");
+    store.dispatch(setLOGGEDOut());
   }
 });

@@ -7,12 +7,5 @@ exports[`should render Home 1`] = `
   </h2>
   <Connect(ExpensesListFilter) />
   <Connect(ExpensesList) />
-  <NavLink
-    activeClassName="is-active"
-    exact={true}
-    to="/edit/2"
-  >
-    Help
-  </NavLink>
 </div>
 `;

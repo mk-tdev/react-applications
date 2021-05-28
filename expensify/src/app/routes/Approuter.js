@@ -9,7 +9,7 @@ import Home from "../components/Home";
 import Login from "../components/Login";
 import NotFound from "../components/NotFound";
 
-function AppRouter() {
+export const AppRouter = () => {
   return (
     <BrowserRouter>
       <Header />
@@ -26,6 +26,6 @@ function AppRouter() {
       </div>
     </BrowserRouter>
   );
-}
+};
 
 export default AppRouter;

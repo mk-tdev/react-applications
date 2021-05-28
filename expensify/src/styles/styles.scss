@@ -11,16 +11,18 @@ body {
   display: flex;
   justify-content: flex-start;
   align-content: center;
-  padding: 20px 5px;
+  padding: 5px 5px;
   color: azure;
   box-shadow: 0 2px 12px $app-green;
+  align-items: center;
 
   .is-active {
     font-size: larger;
   }
 
+  span,
   a {
-    padding: 0 10px;
+    padding: 10px 10px;
     text-decoration: none;
     color: #fff;
   }
