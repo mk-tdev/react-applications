@@ -13,7 +13,7 @@ import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import DeleteIcon from "@material-ui/icons/Delete";
 import moment from "moment";
 import useStyles from "./styles";
-import { deletePost } from "../../../actions/posts";
+import { deletePost, likePost } from "../../../actions/posts";
 
 const Post = ({ post, setCurrentId }) => {
   const classes = useStyles();
@@ -55,13 +55,17 @@ const Post = ({ post, setCurrentId }) => {
       </Typography>
 
       <CardContent>
-        <Typography variant="h5" gutterBottom>
+        <Typography variant="body2" component="p" color="textSecondary">
           {post.message}
         </Typography>
       </CardContent>
 
       <CardActions className={classes.cardActions}>
-        <Button color="primary" size="small" onClick={() => {}}>
+        <Button
+          color="primary"
+          size="small"
+          onClick={() => dispatch(likePost(post._id))}
+        >
           <ThumbUpAltIcon fontSize="default" /> LIKE {post.likeCount}
         </Button>
         <Button

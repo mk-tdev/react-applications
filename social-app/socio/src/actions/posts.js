@@ -5,7 +5,7 @@ export const getPosts = () => async (dispatch) => {
   try {
     const { data } = await api.fetchPosts();
 
-    const action = { type: "FETCH_ALL", payload: processData(data) };
+    const action = { type: "FETCH_ALL", payload: data };
     dispatch(action);
   } catch (error) {
     console.log("Error in fetching: ", error);
@@ -42,9 +42,12 @@ export const deletePost = (id) => async (dispatch) => {
   }
 };
 
-const processData = (data) => {
-  return data.map((d) => ({
-    ...d,
-    tags: [...(d.tags.length > 0 ? d.tags[0].split(",") : "")],
-  }));
+export const likePost = (id) => async (dispatch) => {
+  try {
+    const { data } = await api.likePost(id);
+    const action = { type: "LIKE_POST", payload: data };
+    dispatch(action);
+  } catch (error) {
+    console.log("Error in Like Post: ", error);
+  }
 };
