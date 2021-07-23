@@ -1,13 +1,15 @@
+import * as ACTIONS from "../constants/actionTypes";
+
 const reducer = (state = [], action) => {
   switch (action.type) {
-    case "FETCH_ALL":
+    case ACTIONS.FETCH_ALL:
       return action.payload;
-    case "CREATE_POST":
+    case ACTIONS.CREATE_POST:
       return [...state, action.payload];
-    case "DELETE_POST":
+    case ACTIONS.DELETE_POST:
       return state.filter((post) => post._id !== action.payload);
-    case "UPDATE_POST":
-    case "LIKE_POST":
+    case ACTIONS.UPDATE_POST:
+    case ACTIONS.LIKE_POST:
       return state.map((post) =>
         post._id === action.payload._id ? action.payload : post
       );
